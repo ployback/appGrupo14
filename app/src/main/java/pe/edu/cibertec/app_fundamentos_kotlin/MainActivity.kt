@@ -1,0 +1,30 @@
+package pe.edu.cibertec.app_fundamentos_kotlin
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import pe.edu.cibertec.app_fundamentos_kotlin.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnPregunta1.setOnClickListener(this)
+        binding.btnPregunta2.setOnClickListener(this)
+        binding.btnPregunta3.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btnPregunta1 -> startActivity(Intent(this, Pregunta1Activity::class.java))
+            R.id.btnPregunta2 -> startActivity(Intent(this, Pregunta2Activity::class.java))
+            R.id.btnPregunta3 -> startActivity(Intent(this, Pregunta3Activity::class.java))
+        }
+    }
+}
